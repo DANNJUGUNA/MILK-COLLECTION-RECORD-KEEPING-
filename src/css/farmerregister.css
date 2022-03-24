@@ -1,0 +1,67 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.lable {
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
+}
+
+.txtfield {
+    -fx-font-: 12px;
+    
+    -fx-border-color: black;
+    -fx-text-fill: black;
+    -fx-background-color: #fff;
+}
+.radio{
+   
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
+}
+
+
+.header {
+    -fx-font-weight: bolder;
+    -fx-border-color: none;
+    -fx-text-fill: #fff;
+    -fx-font-size: 18px;
+}
+
+.register {
+    -fx-background-color: #0066cc;
+    -fx-font-size: 14px;
+    -fx-border: none;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff;
+}
+
+.back {
+    -fx-background-color: none;
+
+}
+
+.anchor {
+    -fx-background-color: #0066cc;
+    -fx-border-color: #fff;
+}
+
+.anchor1 {
+-fx-background-color: #fff;
+}
+.close{
+    -fx-background-color: none;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
+}
+.textarea{
+   -fx-font-size: 13px; 
+   -fx-text-fill: black;
+   -fx-border-color: #0066cc;
+   -fx-font-weight: bold;
+}
+
+

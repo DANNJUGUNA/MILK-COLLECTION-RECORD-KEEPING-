@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="680" maxWidth="1410" minHeight="600" minWidth="1300" prefHeight="839.0" prefWidth="1410" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <center>
+      <HBox prefHeight="829.0" prefWidth="1616.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="594.0" prefWidth="1615.0" style="-fx-background-color: red;">
+               <children>
+                  <ImageView fitHeight="1517.0" fitWidth="1659.0" layoutX="-44.0" layoutY="-599.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/background1.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="102.0" layoutY="117.0" prefHeight="125.0" prefWidth="1506.0" styleClass="head" stylesheets="@../css/home.css" AnchorPane.topAnchor="115.0">
+                     <children>
+                        <ImageView fitHeight="71.0" fitWidth="99.0" layoutX="689.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/log.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="577.0" layoutY="80.0" styleClass="label1" stylesheets="@../css/home.css" text="MILK COLLECTION RECORD KEEPING SYSTEM" />
+                        <AnchorPane layoutX="1223.0" layoutY="11.0" prefHeight="89.0" prefWidth="200.0">
+                           <children>
+                              <JFXButton fx:id="logout" onAction="#backtologin" styleClass="logout" stylesheets="@../css/home.css" text="LOG OUT">
+                                 <graphic>
+                                    <ImageView fitHeight="28.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/logout.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="resetpass" layoutX="-2.0" layoutY="40.0" onAction="#resetpassword" styleClass="pass" stylesheets="@../css/home.css" text="RESET PASSWORD">
+                                 <graphic>
+                                    <ImageView fitHeight="26.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/password_reset.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="66.0" layoutY="12.0" prefHeight="96.0" prefWidth="218.0">
+                           <children>
+                              <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="81.0" layoutY="16.0" prefHeight="19.0" prefWidth="108.0" styleClass="label2" stylesheets="@../css/home.css" text="LOGGED IN USER" />
+                              <Label fx:id="user" layoutX="69.0" layoutY="47.0" prefHeight="22.0" prefWidth="132.0" styleClass="label3" stylesheets="@../css/home.css" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="199.0" layoutY="269.0" prefHeight="479.0" prefWidth="1195.0" styleClass="menu" stylesheets="@../css/home.css">
+                     <children>
+                        <AnchorPane layoutX="103.0" layoutY="100.0" prefHeight="110.0" prefWidth="200.0" styleClass="button-anchor" stylesheets="@../css/home.css" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="100.0">
+                           <children>
+                              <JFXButton fx:id="deliveryrecord" layoutX="14.0" layoutY="30.0" onAction="#recorddelivery" prefHeight="49.0" prefWidth="167.0" styleClass="buttons" stylesheets="@../css/home.css" text="RECORD DELIVERY">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/register.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="855.0" layoutY="104.0" prefHeight="110.0" prefWidth="200.0" styleClass="button-anchor" stylesheets="@../css/home.css" AnchorPane.leftAnchor="855.0" AnchorPane.topAnchor="104.0">
+                           <children>
+                              <JFXButton fx:id="farmerreport" layoutX="16.0" layoutY="39.0" onAction="#farmersreport" prefHeight="29.0" prefWidth="172.0" styleClass="buttons" stylesheets="@../css/home.css" text="FARMER REPORT ">
+                                 <graphic>
+                                    <ImageView fitHeight="150.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/note.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="498.0" layoutY="104.0" prefHeight="110.0" prefWidth="200.0" styleClass="button-anchor" stylesheets="@../css/home.css" AnchorPane.leftAnchor="498.0" AnchorPane.topAnchor="104.0">
+                           <children>
+                              <JFXButton fx:id="registerfarmer" layoutX="16.0" layoutY="30.0" onAction="#registerfarmers" prefHeight="17.0" prefWidth="182.0" styleClass="buttons" stylesheets="@../css/home.css" text="REGISTER FARMER">
+                                 <graphic>
+                                    <ImageView fitHeight="41.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/register.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="113.0" layoutY="298.0" prefHeight="110.0" prefWidth="200.0" styleClass="button-anchor" stylesheets="@../css/home.css" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="298.0">
+                           <children>
+                              <JFXButton fx:id="ratings" layoutX="16.0" layoutY="30.0" onAction="#insertratings" prefHeight="17.0" prefWidth="182.0" styleClass="buttons" stylesheets="@../css/home.css" text="INSERT RATINGS">
+                                 <graphic>
+                                    <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/coins.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="508.0" layoutY="308.0" prefHeight="110.0" prefWidth="200.0" styleClass="button-anchor" stylesheets="@../css/home.css" AnchorPane.topAnchor="298.0">
+                           <children>
+                              <JFXButton fx:id="centrereport" layoutX="16.0" layoutY="30.0" onAction="#centresreport" prefHeight="17.0" prefWidth="182.0" styleClass="buttons" stylesheets="@../css/home.css" text="CENTRE REPORT">
+                                 <graphic>
+                                    <ImageView fitHeight="41.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/note.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>

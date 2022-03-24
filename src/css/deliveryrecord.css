@@ -1,0 +1,138 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.anchor1{
+    -fx-background-color: #fff;
+    -fx-border-color: black;
+}
+.head{
+    -fx-background-color: none;
+    -fx-text-fill: black;
+    
+    -fx-font-weight: bolder;
+    -fx-border-color: none;
+   
+    -fx-font-size: 18px;
+}
+.close{
+    -fx-background-color: none;
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
+}
+.textarea{
+   -fx-font-size: 13px; 
+   -fx-text-fill: black;
+   -fx-border-color: #0066cc;
+   -fx-font-weight: bold;
+}
+.print{
+    -fx-background-color: #0066cc;
+    -fx-font-size: 14px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 9px;
+  -fx-border-color: white;
+  -fx-background-radius: 9px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff;
+}
+.line{
+    -fx-background-color: black;
+    -fx-stroke: 6px;
+}
+.lable {
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
+}
+.txtfield {
+    -fx-font-size: 12px;
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+    -fx-background-color: #fff;
+}
+.dan{
+    
+    .date-picker .combo-box {
+
+-fx-border-width: 2px;
+-fx-font-size: 12px;
+    
+    -fx-border-color: black;
+    
+  }
+
+.date-picker .text-field{
+-fx-background-radius:2px ;
+-fx-border-color: black;
+-fx-font-: 18px;
+-fx-text-fill: black;
+    -fx-background-color: #fff;
+}
+
+.date-picker .arrow-button{
+-fx-background-radius:2px ;
+-fx-background-color: #000099;
+}
+
+.date-picker .arrow-button .arrow{
+-fx-background-radius:2px ;
+-fx-background-color: red;
+}
+
+.date-picker .arrow-button:hover .arrow{
+-fx-background-radius:2px ;
+-fx-background-color: #red;
+ }
+
+ .date-picker .button {
+-fx-background-color: none;
+-fx-border-color:none;
+-fx-pref-height: 30px;
+-fx-pref-width: 30px;
+-fx-font-size: 12px;
+ }
+
+ .date-picker .button:hover {
+-fx-border-color:red;
+-fx-pref-height: 35px;
+-fx-pref-width: 35px;
+ }
+ .date-picker .lable {
+-fx-border-color:red;
+-fx-pref-height: 35px;
+-fx-pref-width: 35px;
+ }
+.date-picker .button .arrow:pressed {
+-fx-border-color:red;
+-fx-border-color:blue;
+-fx-pref-height: 30px;
+-fx-pref-width: 30px;
+ }
+
+ .date-picker .cell {
+-fx-background-color:white;
+-fx-pref-width:20px ;
+-fx-pref-height:25px ;
+ }
+
+.date-picker .cell:hover {
+-fx-background-color: none;
+-fx-pref-width:20px ;
+-fx-pref-height:25px ;
+}
+
+.date-picker .cell:focused {
+-fx-background-color:white;
+-fx-font-size:13px;
+-fx-pref-width:20px ;
+-fx-pref-height:25px ;
+ }
+
+.date-picker-popup  {
+-fx-border-color:blue;
+-fx-background-color: white;
+ }
+}

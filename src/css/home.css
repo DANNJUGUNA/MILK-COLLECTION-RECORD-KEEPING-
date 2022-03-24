@@ -1,0 +1,88 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.bg-border-oane{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10px 10px  10px  10px;
+}
+.bg-headerpane{
+    -fx-background-color: #2e7d32;
+    -fx-background-radius: 0px 0px  0px  0px;
+}
+.button-home{
+    -fx-background-color: #2e7d32;
+    -fx-background-radius: 10px 10px  10px   10px;
+}
+.head{
+    -fx-background-color: #fff;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
+.label1{
+    -fx-font-weight:bold; 
+    -fx-text-fill: black;
+    -fx-font-size:13px;
+}
+.line{
+    -fx-border-color: black;
+    -fx-border-width: 4px;
+}
+.label2{
+    -fx-font-weight:bold; 
+    -fx-text-fill: black;
+    -fx-font-size:13px;
+}
+.label3{
+    -fx-font-weight:bold; 
+    -fx-text-fill: #fff;
+    -fx-font-size:13px;
+}
+.logout{
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size:13px;
+    -fx-background-color: none;
+}
+.pass{
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size:13px;
+    -fx-background-color: none;
+}
+.button-anchor{
+     -fx-background-color: white;
+     -fx-background-radius: 38px;
+     
+}
+.buttons{
+  -fx-text-fill: black;
+    -fx-font-size:13px; 
+    -fx-font-weight:bold;
+     -fx-background-color: none;
+}
+.menu{
+    -fx-background-color: black;
+     -fx-background-radius: 38px;
+}
+
+.Button-hover:hover{
+  -fx-font-weight:bold;
+  -fx-background-color:red;
+  -fx-background-radius: 10px 10px  10px   10px;
+  -fx-font-size: 18;
+  -fx-text-fill: blue;
+  -fx-border-color: #000000;
+  -fx-border-radius: 10px 10px  10px   10px;
+  -fx-border-width: 3;
+}
+.Button-pressed:pressed{
+  -fx-font-weight:bold;
+  -fx-background-color: yellow;
+  -fx-background-radius: 10px 10px  10px   10px;
+  -fx-font-size: 18;
+  -fx-border-color: green;
+  -fx-border-radius: 10px 10px  10px   10px;
+  -fx-border-width: 3;
+    
+}

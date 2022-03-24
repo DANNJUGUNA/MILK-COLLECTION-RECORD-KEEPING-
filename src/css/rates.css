@@ -1,0 +1,78 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.anchor{
+    -fx-background-color: #fff;
+}
+.label{
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
+}
+.dan{
+    
+  .date-picker .text-field{
+ -fx-background-color:white;
+-fx-font-size: 12px;
+-fx-text-fill: red;
+-fx-font-weight:bold;
+    
+}
+.date-picker .cell{
+    -fx-font-size:17px;
+    -fx-background-color:white;
+    -fx-text-fill: black;
+}
+.date-picker .cell:focused {
+-fx-background-color:white;
+-fx-font-size:13px;
+-fx-pref-width:20px ;
+-fx-pref-height:25px ;
+ }
+.date-picker .arrow-button{
+-fx-background-radius:2px ;
+-fx-background-color: none;
+}
+.date-picker .button {
+-fx-background-color: none;
+-fx-border-color:none;
+-fx-pref-height: 30px;
+-fx-pref-width: 30px;
+-fx-font-size: 12px;
+ }
+ .date-picker .button:hover {
+-fx-border-color:red;
+-fx-pref-height: 35px;
+-fx-pref-width: 35px;
+ }
+ .date-picker-popup  {
+-fx-border-color:black;
+-fx-border-width: 2px;
+-fx-background-color: white;
+ }
+}
+
+.insert{
+     -fx-background-color: blue;
+  -fx-border-color: white;
+  -fx-text-fill:#fff;
+  -fx-border-width: 2px;
+  -fx-font-size:11px;
+  -fx-font-weight:bold;
+  -fx-border-radius: 9px;
+  -fx-background-radius: 9px;
+}
+.text{
+    -fx-background-color: #fff;
+     -fx-border-color: black;
+     -fx-font-size:14px;
+     -fx-border-size:2px;
+}
+.close{
+    -fx-background-color: none;
+    -fx-border-color: none;
+    -fx-text-fill: black;
+    -fx-font-size:14px;
+    -fx-font-weight: bold;
+}

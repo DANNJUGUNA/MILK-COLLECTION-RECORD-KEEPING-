@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeliveryrecordController">
+   <children>
+      <BorderPane prefHeight="631.0" prefWidth="788.0">
+         <center>
+            <AnchorPane prefHeight="631.0" prefWidth="805.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="412.0" fitWidth="431.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/background1.png" />
+                     </image>
+                  </ImageView>
+                  <JFXTextArea fx:id="deliverynote" editable="false" layoutX="432.0" layoutY="114.0" prefHeight="353.0" prefWidth="353.0" styleClass="textarea" stylesheets="@../css/deliveryrecord.css" />
+                  <AnchorPane prefHeight="116.0" prefWidth="788.0" styleClass="anchor1" stylesheets="@../css/deliveryrecord.css">
+                     <children>
+                        <Label layoutX="336.0" layoutY="77.0" prefHeight="27.0" prefWidth="173.0" styleClass="head" stylesheets="@../css/deliveryrecord.css" text="RECORD DELIVERY" />
+                        <ImageView fitHeight="57.0" fitWidth="106.0" layoutX="386.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/log.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="close" layoutX="682.0" layoutY="25.0" mnemonicParsing="false" onAction="#closebuttononaction" prefHeight="24.0" prefWidth="94.0" styleClass="close" stylesheets="@../css/deliveryrecord.css" text="Close">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/cancel.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <JFXButton fx:id="print" layoutX="568.0" layoutY="472.0" prefHeight="22.0" prefWidth="61.0" styleClass="print" stylesheets="@../css/deliveryrecord.css" text="Print" />
+                  <Line endX="673.0" endY="0.01507568359375" layoutX="115.0" layoutY="503.0" startX="-115.0" startY="0.01507568359375" strokeWidth="2.0" />
+                  <TextField fx:id="farmernum" layoutX="125.0" layoutY="171.0" onAction="#testEnter" onKeyPressed="#numvalidate" prefHeight="30.0" prefWidth="186.0" styleClass="txtfield" stylesheets="@../css/deliveryrecord.css" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="171.0" />
+                  <TextField fx:id="delivery" layoutX="125.0" layoutY="328.0" prefHeight="30.0" prefWidth="186.0" styleClass="txtfield" stylesheets="@../css/deliveryrecord.css" AnchorPane.leftAnchor="125.0" />
+                  <JFXComboBox fx:id="villages" layoutX="125.0" layoutY="279.0" prefHeight="30.0" prefWidth="186.0" styleClass="txtfield" stylesheets="@../css/deliveryrecord.css" AnchorPane.leftAnchor="125.0" />
+                  <Button fx:id="insert" layoutX="69.0" layoutY="433.0" mnemonicParsing="false" onAction="#insertdata" prefHeight="20.0" prefWidth="90.0" styleClass="print" stylesheets="@../css/deliveryrecord.css" text="SAVE" AnchorPane.bottomAnchor="174.0" />
+                  <TableView fx:id="tabledelivery" layoutY="504.0" onMouseClicked="#apudatefarmer" prefHeight="128.0" prefWidth="768.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="colfarmernum" prefWidth="146.0" text="FARMER NO." />
+                      <TableColumn fx:id="colvillage" prefWidth="199.0" text="VILLAGE" />
+                        <TableColumn fx:id="coldate" prefWidth="225.0" text="DATE" />
+                        <TableColumn fx:id="colamount" prefWidth="218.0" text="AMOUNT" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="40.0" layoutY="173.0" prefHeight="19.0" prefWidth="80.0" styleClass="lable" stylesheets="@../css/deliveryrecord.css" text="FARMER NO." AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="177.0" />
+                  <Label layoutX="35.0" layoutY="230.0" styleClass="lable" stylesheets="@../css/deliveryrecord.css" text="DATE" AnchorPane.leftAnchor="35.0" />
+                  <Label layoutX="35.0" layoutY="286.0" styleClass="lable" stylesheets="@../css/deliveryrecord.css" text="VILLAGE" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="286.0" />
+                  <Label layoutX="35.0" layoutY="336.0" styleClass="lable" stylesheets="@../css/deliveryrecord.css" text="AMOUNT" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="336.0" />
+                  <JFXDatePicker fx:id="datedevry" editable="false" layoutX="131.0" layoutY="227.0" styleClass="date-picker" stylesheets="@../css/deliveryrecord.css" />
+                  <JFXButton fx:id="update" layoutX="253.0" layoutY="428.0" onAction="#updateTable" prefHeight="20.0" prefWidth="90.0" styleClass="print" stylesheets="@../css/deliveryrecord.css" text="UPDATE" AnchorPane.bottomAnchor="174.0" />
+                  <Label fx:id="farmerNo" layoutX="67.0" layoutY="140.0" prefHeight="17.0" prefWidth="303.0" textFill="#fcfafa">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

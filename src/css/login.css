@@ -1,0 +1,56 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+.label {
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.label1 {
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+}
+
+.txtfield {
+    -fx-font: 12px;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+    -fx-background-color: white;
+}
+
+.pass {
+    -fx-font: 12px;
+
+    -fx-border-color: black;
+    -fx-text-fill: black;
+    -fx-background-color: white;
+
+}
+
+.cancel {
+    -fx-background-color: none;
+
+}
+
+.login {
+    -fx-font: 12px;
+    -fx-border-color: black;
+    -fx-background-color: #0066cc;
+
+}
+
+.image-view-wrapper:border {
+    -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-width: 5;
+}
+
+.name {
+    -fx-background-color: #0066cc;
+}
+
+
