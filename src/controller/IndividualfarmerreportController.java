@@ -4,19 +4,33 @@
  * and open the template in the editor.
  */
 package controller;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import dbconnection.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import model.individualreport;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,10 +74,7 @@ Connection conn = dbconnection.milk_db();
         // TODO
     }    
 
-    @FXML
-    private void onprint(ActionEvent event) {
-    }
-
+    
     @FXML
     private void closeinterface(ActionEvent event) {
         Stage stage = (Stage) close.getScene().getWindow();
@@ -160,5 +171,138 @@ public void TotalLitre(){
        }
 
 }
+void printRecipt() throws DocumentException, IOException, SQLException{
+    DisplayFarmer();
+
+  
+   String start = startdate.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd")); 
+   String end = enddate.getValue().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+    
+    
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    int farmNam = Integer.parseInt(farmernum.getText());
+    String pdfnane = ""+farmNam+".pdf";
+       Document document = new Document();
+      //Create OutputStream instance.
+	OutputStream outputStream = 
+	    new FileOutputStream(new File("C:\\Users\\DAN\\Documents\\farmerRprt\\"+pdfnane+""));
+        
+        //Create PDFWriter instance.
+        PdfWriter.getInstance(document, outputStream);
+ 
+        //Open the document.
+        document.open();
+ 
+        //Create Table object, Here 4 specify the no. of columns
+         PdfPTable pdfPTable2 = new PdfPTable(1);
+         PdfPCell pdfPC00= new PdfPCell(new Paragraph("                                    farm ORDER LIST"));
+           
+        pdfPC00.setBorder(Rectangle.NO_BORDER);
+        pdfPTable2.addCell(pdfPC00);
+        
+        
+        PdfPTable pdfPTable3 = new PdfPTable(1);
+        PdfPCell pdfPC002 = new PdfPCell(new Paragraph("                                                    "));
+        pdfPC002.setBorder(Rectangle.NO_BORDER);
+        pdfPTable3.addCell(pdfPC002);
+        
+        PdfPTable pdfPTable4 = new PdfPTable(1);
+        PdfPCell pdfPC003 = new PdfPCell(new Paragraph("                                                     "));
+        pdfPC003.setBorder(Rectangle.NO_BORDER);
+        pdfPTable3.addCell(pdfPC003);
+        
+        PdfPTable pdfPTable05 = new PdfPTable(2);
+        PdfPCell pdfPC03 = new PdfPCell(new Paragraph("Name: "+rs.getString("firstname")+"\t "+rs.getString("secondname")+"\t "+rs.getString("surname")));
+        PdfPCell pdfPC04= new PdfPCell(new Paragraph("Farmer Reg Number: "+farmNam));
+        pdfPC04.setBorder(Rectangle.NO_BORDER);
+        pdfPC03.setBorder(Rectangle.NO_BORDER);
+        pdfPTable05.addCell(pdfPC03);
+        pdfPTable05.addCell(pdfPC04);
+        
+        PdfPTable pdfPTable5 = new PdfPTable(3);
+        PdfPCell pdfPC3 = new PdfPCell(new Paragraph("Village: "+rs.getString("village")));
+        PdfPCell pdfPC4= new PdfPCell(new Paragraph("Report From Date: "+start));
+        PdfPCell pdfPCTo= new PdfPCell(new Paragraph("Report To Date: "+end));
+        pdfPC4.setBorder(Rectangle.NO_BORDER);
+        pdfPC3.setBorder(Rectangle.NO_BORDER);
+        pdfPCTo.setBorder(Rectangle.NO_BORDER);
+        pdfPTable5.addCell(pdfPC3);
+        pdfPTable5.addCell(pdfPC4);
+        pdfPTable5.addCell(pdfPCTo);
+        
+        PdfPTable pdfPTable6 = new PdfPTable(1);
+        PdfPCell pdfPC006 = new PdfPCell(new Paragraph("                                                     "));
+        pdfPC006.setBorder(Rectangle.NO_BORDER);
+        pdfPTable6.addCell(pdfPC006);
+        
+        
+        PdfPTable pdfPTable = new PdfPTable(2);
+        PdfPCell pdfPC1 = new PdfPCell(new Paragraph("AMOUNT DELIVERED"));
+        PdfPCell pdfPC2= new PdfPCell(new Paragraph("DATE"));
+        pdfPTable.addCell(pdfPC2);
+        pdfPTable.addCell(pdfPC1);
+       pdfPC006.setBorder(Rectangle.NO_BORDER);
+       
+ 
+        for(int i=0;i<data.size();i++){
+            
+        
+        //Create cells
+        PdfPCell pdfPCell1 = new PdfPCell(new Paragraph(data.get(i)[1]));
+        PdfPCell pdfPCell2 = new PdfPCell(new Paragraph(data.get(i)[0]));
+     
+ 
+        //Add cells to table
+        pdfPTable.addCell(pdfPCell1);
+        pdfPTable.addCell(pdfPCell2);
+        pdfPC006.setBorder(Rectangle.NO_BORDER);
+        
+ 
+        //Add content to the document using Table objects.
+        }
+       PdfPTable pdfPTable30 = new PdfPTable(2);
+        PdfPCell pdfPC0020 = new PdfPCell(new Paragraph("                                                    "));
+        pdfPC0020.setBorder(Rectangle.NO_BORDER);
+        pdfPTable30.addCell(pdfPC0020);
+          try{
+           
+          String famNo = "SELECT SUM(produce.amount), rates.cost FROM rates INNER JOIN produce WHERE produce.day>='"+start+"' AND produce.day<='"+end+"' AND rates.startday>='"+start+"' AND rates.endday<='"+end+"' AND produce.farmernumber='"+farmernum.getText()+"' "; 
+          pst = conn.prepareStatement(famNo);
+          rs = pst.executeQuery();
+          while(rs.next()){
+              int ltrAmount = rs.getInt("SUM(produce.amount)");
+              double cst=rs.getDouble("rates.cost");
+              double payment=ltrAmount*cst; 
+              
+        
+        PdfPTable pdfPTable15 = new PdfPTable(3);
+        PdfPCell pdfPC13 = new PdfPCell(new Paragraph("Total Amount Delivered: "+ltrAmount));
+        PdfPCell pdfPC14= new PdfPCell(new Paragraph("COST PER LITRE: "+cst));
+        PdfPCell pdfPC140= new PdfPCell(new Paragraph("Total money payable: "+payment));
+        pdfPC14.setBorder(Rectangle.NO_BORDER);
+        pdfPC13.setBorder(Rectangle.NO_BORDER);
+        pdfPC140.setBorder(Rectangle.NO_BORDER);
+        pdfPTable15.addCell(pdfPC13);
+        pdfPTable15.addCell(pdfPC14);
+         pdfPTable15.addCell(pdfPC140);
+        
+        document.add(pdfPTable2);document.add(pdfPTable05);document.add(pdfPTable3);document.add(pdfPTable4);document.add(pdfPTable5);document.add(pdfPTable6);
+        document.add(pdfPTable);document.add(pdfPTable15);document.add(pdfPTable30 );
+
+        //Close document and outputStream.
+        document.close();
+        outputStream.close();
+         DisplayAmount();
+         TotalLitre();
+            }    
+       }catch(Exception ex){
+           JOptionPane.showMessageDialog(null, "iko apa");
+       }
+        
+}
+@FXML
+    private void onprint(ActionEvent event) throws DocumentException, IOException, SQLException {
+        printRecipt();
+    }
 
 }
