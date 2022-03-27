@@ -47,7 +47,7 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <JFXButton fx:id="print" layoutX="568.0" layoutY="472.0" prefHeight="22.0" prefWidth="61.0" styleClass="print" stylesheets="@../css/deliveryrecord.css" text="Print" />
+                  <JFXButton fx:id="print" layoutX="568.0" layoutY="472.0" onAction="#print" prefHeight="22.0" prefWidth="61.0" styleClass="print" stylesheets="@../css/deliveryrecord.css" text="Print" />
                   <Line endX="673.0" endY="0.01507568359375" layoutX="115.0" layoutY="503.0" startX="-115.0" startY="0.01507568359375" strokeWidth="2.0" />
                   <TextField fx:id="farmernum" layoutX="125.0" layoutY="171.0" onAction="#testEnter" onKeyPressed="#numvalidate" prefHeight="30.0" prefWidth="186.0" styleClass="txtfield" stylesheets="@../css/deliveryrecord.css" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="171.0" />
                   <TextField fx:id="delivery" layoutX="125.0" layoutY="328.0" prefHeight="30.0" prefWidth="186.0" styleClass="txtfield" stylesheets="@../css/deliveryrecord.css" AnchorPane.leftAnchor="125.0" />

@@ -21,7 +21,7 @@ public class Milk extends Application {
    @Override
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("/gui/deliveryrecord.fxml"));
-        Parent root=FXMLLoader.load(getClass().getResource("/gui/individualfarmerreport.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("/gui/deliveryrecord.fxml"));
         stage.setTitle("milk collection record keeing application");
         //stage.setFullScreen(true);
         stage.initStyle(StageStyle.DECORATED);

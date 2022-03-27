@@ -36,6 +36,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -97,6 +98,8 @@ try{
               String name2 = rs.getString("secondname");
               String name3 = rs.getString("surname");              
               String vill=rs.getString("village");
+    
+              
                report.setText("\t\t\t\t\t\t\t\t\t\t\t FARMERS REPORT \n"
              //+"\t\n"+("D:\\4.2project\\milk\\src\\images/log")
             +"==========================================================================="
@@ -181,7 +184,7 @@ void printRecipt() throws DocumentException, IOException, SQLException{
     
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     int farmNam = Integer.parseInt(farmernum.getText());
-    String pdfnane = ""+farmNam+".pdf";
+    String pdfnane = ""+farmNam+"report.pdf";
        Document document = new Document();
       //Create OutputStream instance.
 	OutputStream outputStream = 
@@ -195,7 +198,7 @@ void printRecipt() throws DocumentException, IOException, SQLException{
  
         //Create Table object, Here 4 specify the no. of columns
          PdfPTable pdfPTable2 = new PdfPTable(1);
-         PdfPCell pdfPC00= new PdfPCell(new Paragraph("                                    farm ORDER LIST"));
+         PdfPCell pdfPC00= new PdfPCell(new Paragraph("                                    FARMER MONTHLY REPORT"));
            
         pdfPC00.setBorder(Rectangle.NO_BORDER);
         pdfPTable2.addCell(pdfPC00);
@@ -234,6 +237,19 @@ void printRecipt() throws DocumentException, IOException, SQLException{
         PdfPCell pdfPC006 = new PdfPCell(new Paragraph("                                                     "));
         pdfPC006.setBorder(Rectangle.NO_BORDER);
         pdfPTable6.addCell(pdfPC006);
+        
+        
+         PdfPTable pdfPTable7 = new PdfPTable(1);
+        PdfPCell pdfPC0061 = new PdfPCell(new Paragraph("                                                     "));
+        pdfPC0061.setBorder(Rectangle.NO_BORDER);
+        pdfPTable6.addCell(pdfPC0061);
+        
+        
+        PdfPTable pdfPTable8 = new PdfPTable(1);
+        PdfPCell pdfPC31 = new PdfPCell(new Paragraph("Date:"+dateFormat.format(new Date())));
+        pdfPC31.setBorder(Rectangle.NO_BORDER);
+        pdfPTable8.addCell(pdfPC31);
+      
         
         
         PdfPTable pdfPTable = new PdfPTable(2);
@@ -276,18 +292,21 @@ void printRecipt() throws DocumentException, IOException, SQLException{
               
         
         PdfPTable pdfPTable15 = new PdfPTable(3);
-        PdfPCell pdfPC13 = new PdfPCell(new Paragraph("Total Amount Delivered: "+ltrAmount));
-        PdfPCell pdfPC14= new PdfPCell(new Paragraph("COST PER LITRE: "+cst));
-        PdfPCell pdfPC140= new PdfPCell(new Paragraph("Total money payable: "+payment));
+        PdfPCell pdfPC13 = new PdfPCell(new Paragraph("Total Amount Delivered: "+ltrAmount+"ltrs"));
+        PdfPCell pdfPC14= new PdfPCell(new Paragraph("Cost per Litre: "+cst+"Ksh"));
+        PdfPCell pdfPC140= new PdfPCell(new Paragraph("Total money payable: "+payment+"Ksh"));
         pdfPC14.setBorder(Rectangle.NO_BORDER);
         pdfPC13.setBorder(Rectangle.NO_BORDER);
         pdfPC140.setBorder(Rectangle.NO_BORDER);
         pdfPTable15.addCell(pdfPC13);
         pdfPTable15.addCell(pdfPC14);
          pdfPTable15.addCell(pdfPC140);
+         
+        
+        
         
         document.add(pdfPTable2);document.add(pdfPTable05);document.add(pdfPTable3);document.add(pdfPTable4);document.add(pdfPTable5);document.add(pdfPTable6);
-        document.add(pdfPTable);document.add(pdfPTable15);document.add(pdfPTable30 );
+        document.add(pdfPTable);document.add(pdfPTable15);document.add(pdfPTable30 ); document.add(pdfPTable7);document.add(pdfPTable8);
 
         //Close document and outputStream.
         document.close();

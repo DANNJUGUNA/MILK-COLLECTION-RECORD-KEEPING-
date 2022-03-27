@@ -5,20 +5,31 @@
  */
 package controller;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import dbconnection.*;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import java.awt.HeadlessException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -89,6 +100,11 @@ Connection conn = dbconnection.milk_db();
     /**
      * Initializes the controller class.
      */
+     int min = 0000000;  
+     int max = 1000000; 
+        
+  //   Random rnd = new Random();
+     int receiptNo =(int)(Math.random()*(max-min+1)+min);
     
     
     @Override
@@ -180,6 +196,7 @@ Connection conn = dbconnection.milk_db();
    
     }
     public void setvalues(){
+        
          
     deliverynote.setText("\t\t\t\t DELIVERY COLLECTION NOTE\n"
              //+"\t\n"+("D:\\4.2project\\milk\\src\\images/log")
@@ -253,6 +270,78 @@ Connection conn = dbconnection.milk_db();
            JOptionPane.showMessageDialog(null, "iko apa");
        }
 
+    }
+    private void Printdeliverynote() throws FileNotFoundException, DocumentException, IOException { 
+        
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+       String pdfnane = ""+receiptNo+".pdf";
+       String farmNam = farmernum.getText();
+       Document document = new Document();
+      //Create OutputStream instance.
+	OutputStream outputStream = 
+	    new FileOutputStream(new File("C:\\Users\\DAN\\Documents\\farmerRprt\\"+pdfnane+""));
+        
+        //Create PDFWriter instance.
+        PdfWriter.getInstance(document, outputStream);
+ 
+        //Open the document.
+        document.open();
+ 
+        //Create Table object, Here 4 specify the no. of columns
+//         PdfPTable pdfPTable2 = new PdfPTable(1);
+//         PdfPCell pdfPC00= new PdfPCell(new Paragraph("                                    DELIVERY COLLECTION NOTE"));
+//           
+//        pdfPC00.setBorder(Rectangle.NO_BORDER);
+//        pdfPTable2.addCell(pdfPC00);
+        
+        
+        PdfPTable pdfPTable3 = new PdfPTable(1);
+        PdfPCell pdfPC002 = new PdfPCell(new Paragraph("                                                    "));
+        pdfPC002.setBorder(Rectangle.NO_BORDER);
+        pdfPTable3.addCell(pdfPC002);
+        
+        PdfPTable pdfPTable4 = new PdfPTable(1);
+        PdfPCell pdfPC003 = new PdfPCell(new Paragraph("                                                     "));
+        pdfPC003.setBorder(Rectangle.NO_BORDER);
+        pdfPTable3.addCell(pdfPC003);
+        
+        PdfPTable pdfPTable5 = new PdfPTable(1);
+        PdfPCell pdfPC4= new PdfPCell(new Paragraph("            Order receipt No. : "+receiptNo));
+        pdfPC4.setBorder(Rectangle.NO_BORDER);
+        pdfPTable5.addCell(pdfPC4);
+        
+        PdfPTable pdfPTable6 = new PdfPTable(1);
+        PdfPCell pdfPC006 = new PdfPCell(new Paragraph("                                                     "));
+        pdfPC006.setBorder(Rectangle.NO_BORDER);
+        pdfPTable6.addCell(pdfPC006);
+        
+        PdfPTable pdfPTable7 = new PdfPTable(1);
+        //PdfPCell pdfPC30 = new PdfPCell(new Paragraph("DATE:"+dateFormat.format(new Date())));
+        PdfPCell pdfPC40= new PdfPCell(new Paragraph("           "+deliverynote.getText()));
+        //PdfPCell pdfPC41= new PdfPCell(new Paragraph("AMOUNT DELIVERED. : "+delivery.getText()));
+        pdfPC40.setBorder(Rectangle.NO_BORDER);
+        //pdfPC41.setBorder(Rectangle.NO_BORDER);
+        //pdfPC30.setBorder(Rectangle.NO_BORDER);
+        //pdfPTable7.addCell(pdfPC30);
+        pdfPTable7.addCell(pdfPC40);
+        // pdfPTable7.addCell(pdfPC41);
+        
+        
+        
+        document.add(pdfPTable3);document.add(pdfPTable4);document.add(pdfPTable5);document.add(pdfPTable6);document.add(pdfPTable7);
+        
+
+        //Close document and outputStream.
+        document.close();
+        outputStream.close();
+ 
+     
+     
+    }
+
+    @FXML
+    private void print(ActionEvent event) throws DocumentException, IOException {
+        Printdeliverynote();
     }
  
     }
