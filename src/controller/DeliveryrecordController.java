@@ -197,15 +197,15 @@ Connection conn = dbconnection.milk_db();
     }
     public void setvalues(){
         
-         
+       
     deliverynote.setText("\t\t\t\t DELIVERY COLLECTION NOTE\n"
-             //+"\t\n"+("D:\\4.2project\\milk\\src\\images/log")
-            +"\t============================="
-            + "\n\n\t\tDate:\t "+datedevry.getValue()
+             +"\t\tRECEIPT NO:\t "+receiptNo
+            +"\n\t\t----------------------------------"
             +"\n\n\t\tFARMER NO.:\t"+farmernum.getText()
-            //+"\n\nVILLAGE:\t"+village.getText()
+            + "\n\n\t\tDATE DELIVERED:\t "+datedevry.getValue()
+           // +"\n\nVILLAGE:\t"+village.getValue()
             +"\n\n\t\tAMOUNT DELIVERED:\t"+delivery.getText()+"\t litres\n"
-            +"\t==============================="
+            +"\t\t----------------------------------"
     );
     }
     public void disbable(){
@@ -273,9 +273,9 @@ Connection conn = dbconnection.milk_db();
     }
     private void Printdeliverynote() throws FileNotFoundException, DocumentException, IOException { 
         
-      SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+     
        String pdfnane = ""+receiptNo+".pdf";
-       String farmNam = farmernum.getText();
+       
        Document document = new Document();
       //Create OutputStream instance.
 	OutputStream outputStream = 
@@ -305,10 +305,7 @@ Connection conn = dbconnection.milk_db();
         pdfPC003.setBorder(Rectangle.NO_BORDER);
         pdfPTable3.addCell(pdfPC003);
         
-        PdfPTable pdfPTable5 = new PdfPTable(1);
-        PdfPCell pdfPC4= new PdfPCell(new Paragraph("            Order receipt No. : "+receiptNo));
-        pdfPC4.setBorder(Rectangle.NO_BORDER);
-        pdfPTable5.addCell(pdfPC4);
+       
         
         PdfPTable pdfPTable6 = new PdfPTable(1);
         PdfPCell pdfPC006 = new PdfPCell(new Paragraph("                                                     "));
@@ -317,7 +314,7 @@ Connection conn = dbconnection.milk_db();
         
         PdfPTable pdfPTable7 = new PdfPTable(1);
         //PdfPCell pdfPC30 = new PdfPCell(new Paragraph("DATE:"+dateFormat.format(new Date())));
-        PdfPCell pdfPC40= new PdfPCell(new Paragraph("           "+deliverynote.getText()));
+        PdfPCell pdfPC40= new PdfPCell(new Paragraph("          "+deliverynote.getText()));
         //PdfPCell pdfPC41= new PdfPCell(new Paragraph("AMOUNT DELIVERED. : "+delivery.getText()));
         pdfPC40.setBorder(Rectangle.NO_BORDER);
         //pdfPC41.setBorder(Rectangle.NO_BORDER);
@@ -328,7 +325,7 @@ Connection conn = dbconnection.milk_db();
         
         
         
-        document.add(pdfPTable3);document.add(pdfPTable4);document.add(pdfPTable5);document.add(pdfPTable6);document.add(pdfPTable7);
+        document.add(pdfPTable3);document.add(pdfPTable4);document.add(pdfPTable6);document.add(pdfPTable7);
         
 
         //Close document and outputStream.

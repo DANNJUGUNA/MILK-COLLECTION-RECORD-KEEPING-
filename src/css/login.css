@@ -33,6 +33,9 @@
 
 .cancel {
     -fx-background-color: none;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-font-weight:bolder;
 
 }
 
@@ -53,4 +56,9 @@
     -fx-background-color: #0066cc;
 }
 
+.border{
+ -fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-width: 2px;   
+}
 

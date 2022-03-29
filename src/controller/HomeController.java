@@ -55,6 +55,8 @@ public class HomeController implements Initializable {
     private JFXButton ratings;
     @FXML
     private JFXButton centrereport;
+    @FXML
+    private JFXButton updatedetails;
 
     /**
      * Initializes the controller class.
@@ -148,6 +150,17 @@ public class HomeController implements Initializable {
       }catch(SQLException ex){
         System.out.println(ex);  
       }    
+    }
+
+    @FXML
+    private void updatefarmerdetails(ActionEvent event) throws IOException {
+         Parent parent = FXMLLoader.load(getClass().getResource("/gui/updatefarmerdetails.fxml"));
+         Scene scene = new Scene(parent);
+         Stage stage  = new Stage();
+         stage.initStyle(StageStyle.UNDECORATED);
+         stage.setScene(scene);
+         stage.centerOnScreen();
+         stage.show();
     }
     
 }

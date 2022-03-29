@@ -4,9 +4,21 @@
  * and open the template in the editor.
  */
 package controller;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXComboBox;
 import model.farmer;
 import dbconnection.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -74,9 +86,14 @@ Connection conn = dbconnection.milk_db();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     
     
-     int min = 000000;  
-     int max = 100000; 
+     int min = 00000;  
+     int max = 10000; 
      int farmerNo =(int)(Math.random()*(max-min+1)+min);
+     int min1 = 000000;  
+     int max1 = 100000; 
+        
+  //   Random rnd = new Random();
+     int receiptNo =(int)(Math.random()*(max1-min1+1)+min1);
     @FXML
     private JFXComboBox<String> vallages;
      ObservableList<String> vallage = FXCollections.observableArrayList("Village1","Village2 ","Village3","Village4");
@@ -93,18 +110,18 @@ Connection conn = dbconnection.milk_db();
     private void RegisterFarmer(ActionEvent event) {
 
         try {
-          String q = "INSERT INTO `farmers`(`id`, `firstname`, `secondname`, `surname`, `idnumber`, `box_no.`, `village`, `phonenumber`, `farmernumber`, `gender`)"+ " VALUES (?,?,?,?,?,?,?,?,?,?)";
+          String q = "INSERT INTO `farmers`( `firstname`, `secondname`, `surname`, `idnumber`, `box_no.`, `village`, `phonenumber`, `farmernumber`, `gender`)"+ " VALUES (?,?,?,?,?,?,?,?,?)";
           pst = conn.prepareStatement(q);
-          pst.setInt(1,0);
-          pst.setString(2,firstname.getText());
-          pst.setString(3, secondname.getText());  
-          pst.setString(4, surname.getText());
-          pst.setString(5, idnum.getText());
-          pst.setString(6, boxnum.getText());  
-          pst.setString(7, vallages.getValue());
-          pst.setString(8, phonenum.getText());
-          pst.setInt(9,farmerNo);
-          pst.setString(10, genders);  
+          
+          pst.setString(1,firstname.getText());
+          pst.setString(2, secondname.getText());  
+          pst.setString(3, surname.getText());
+          pst.setString(4, idnum.getText());
+          pst.setString(5, boxnum.getText());  
+          pst.setString(6, vallages.getValue());
+          pst.setString(7, phonenum.getText());
+          pst.setInt(8,farmerNo);
+          pst.setString(9, genders);  
           pst.execute();
           setValues();
           clearfields();
@@ -113,32 +130,6 @@ Connection conn = dbconnection.milk_db();
             System.out.println(ex);            }
    
     }
-   /* @FXML
-    public void generatepdf(ActionEvent event){
-    PDFont font =  PDType1Font.HELVETICA_BOLD ; 
-             PDDocument doc    = new PDDocument();
-             PDPage page = new PDPage();
-             PDPageContentStream content;
-            try {
-                content = new PDPageContentStream(doc, page);
-                content.beginText();
-                content.moveTextPositionByAmount(300, 400);
-                content.setFont(font, 40);
-                content.drawString(reciept.getText());
-
-               content.endText();
-                content.close();
-                doc.addPage(page);
-                doc.save("example.pdf");
-               } catch (IOException ex) {
-                Logger.getLogger(JavaFXApplication5.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }*/
-    @FXML
-    public void pdf(ActionEvent event){
-        //.setLineWrap(true);
-    }
-    
 @FXML
         public void selectgender(ActionEvent event) {
         if (male.isSelected()) {
@@ -227,5 +218,72 @@ Connection conn = dbconnection.milk_db();
     private void closebuttononaction(ActionEvent event) {
         Stage stage = (Stage) close.getScene().getWindow();
         stage.close();
+    }
+     private void Printdeliverynote() throws FileNotFoundException, DocumentException, IOException { 
+        
+     
+       String pdfnane = ""+receiptNo+"farmer.pdf";
+       
+       Document document = new Document();
+      //Create OutputStream instance.
+	OutputStream outputStream = 
+	    new FileOutputStream(new File("C:\\Users\\DAN\\Documents\\farmerRprt\\"+pdfnane+""));
+        
+        //Create PDFWriter instance.
+        PdfWriter.getInstance(document, outputStream);
+ 
+        //Open the document.
+        document.open();
+ 
+        //Create Table object, Here 4 specify the no. of columns
+//         PdfPTable pdfPTable2 = new PdfPTable(1);
+//         PdfPCell pdfPC00= new PdfPCell(new Paragraph("                                    DELIVERY COLLECTION NOTE"));
+//           
+//        pdfPC00.setBorder(Rectangle.NO_BORDER);
+//        pdfPTable2.addCell(pdfPC00);
+        
+        
+        PdfPTable pdfPTable3 = new PdfPTable(1);
+        PdfPCell pdfPC002 = new PdfPCell(new Paragraph("                                                    "));
+        pdfPC002.setBorder(Rectangle.NO_BORDER);
+        pdfPTable3.addCell(pdfPC002);
+        
+        PdfPTable pdfPTable4 = new PdfPTable(1);
+        PdfPCell pdfPC003 = new PdfPCell(new Paragraph("                                                     "));
+        pdfPC003.setBorder(Rectangle.NO_BORDER);
+        pdfPTable3.addCell(pdfPC003);
+        
+       
+        
+        PdfPTable pdfPTable6 = new PdfPTable(1);
+        PdfPCell pdfPC006 = new PdfPCell(new Paragraph("                                                     "));
+        pdfPC006.setBorder(Rectangle.NO_BORDER);
+        pdfPTable6.addCell(pdfPC006);
+        
+        PdfPTable pdfPTable7 = new PdfPTable(1);
+       
+        PdfPCell pdfPC40= new PdfPCell(new Paragraph("          "+   reciept.getText()));
+        
+        pdfPC40.setBorder(Rectangle.NO_BORDER);
+        
+        pdfPTable7.addCell(pdfPC40);
+        
+        
+        
+        
+        document.add(pdfPTable3);document.add(pdfPTable4);document.add(pdfPTable6);document.add(pdfPTable7);
+        
+
+        //Close document and outputStream.
+        document.close();
+        outputStream.close();
+ 
+     
+     
+    }
+
+    @FXML
+    private void reciept(ActionEvent event) throws DocumentException, IOException {
+        Printdeliverynote();
     }
 }
